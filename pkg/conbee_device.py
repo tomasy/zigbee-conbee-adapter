@@ -242,7 +242,9 @@ class ConBeeTemperatureSensor(ConBeeDevice):
         ConBeeDevice.__init__(self, adapter, _id, dev_id, light)
         self._type = ['TemperatureSensor']
         self._context = 'https://iot.mozilla.org/schemas'
-        self.poll_interval = 10
+
+        # every 5 minutes
+        self.poll_interval = 300
 
         logging.info('ConBeeTemperatureSensor.__init__ %s', light)
         self.add_property(ConBeeTemperatureProperty(self, self.property_state_value))
