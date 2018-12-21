@@ -177,3 +177,14 @@ class ConBeeTemperatureProperty(ConBeeProperty):
         ConBeeProperty.__init__(self, device, 'temperature', desc, func_is=func_is)
         self.update()
         logging.info('Temperature property to device %s', device.name)
+
+    def dev2prop_value(self, value):
+        """
+        Convert device value to property value. e.g. 1800 -> 64.4F
+
+        value -- the value from device
+        """
+        # return int(int(value) / 2.55)
+        return ((value / 100) * 9/5) + 32
+        # (18°C × 9/5) + 32 = 64.4°F
+
