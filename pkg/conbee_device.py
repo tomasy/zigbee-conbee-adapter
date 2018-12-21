@@ -109,7 +109,7 @@ class ConBeeDevice(Device):
         path - 'config' or 'state'
         device -- device of the light
         """
-        console.log('device.light: %s', device.light)
+        logging.info('device.light: %s', device.light)
         value = device.light[path][prop.name]
         if 'type' in prop.description and prop.description['type'] == 'boolean':
             value = bool(value)
