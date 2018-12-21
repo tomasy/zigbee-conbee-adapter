@@ -208,7 +208,7 @@ class ConBeeMotionSensor(ConBeeDevice):
         self._type = ['MotionSensor']
         self._context = 'https://iot.mozilla.org/schemas'
 
-        logging.info('ConBeeSensor.__init__ %s', light)
+        logging.info('ConBeeMotionSensor.__init__ %s', light)
         self.add_property(ConBeeMotionProperty(self, self.is_motion))
         self.add_property(ConBeeLevelProperty(self, 'Battery', self.property_config_value))
 
@@ -242,7 +242,7 @@ class ConBeeTemperatureSensor(ConBeeDevice):
         self._type = ['TemperatureSensor']
         self._context = 'https://iot.mozilla.org/schemas'
 
-        logging.info('ConBeeSensor.__init__ %s', light)
+        logging.info('ConBeeTemperatureSensor.__init__ %s', light)
         self.add_property(ConBeeTemperatureProperty(self, self.property_state_value))
         self.add_property(ConBeeLevelProperty(self, 'Battery', self.property_config_value))
 
@@ -250,12 +250,3 @@ class ConBeeTemperatureSensor(ConBeeDevice):
 
     def get_dev_data(self):
         return self.adapter.rest.get_sensor(self.dev_id)
-
-    @staticmethod
-    def is_motion(device, prop=None):
-        """
-        Is light on or off.
-
-        device -- device the light is connected to
-        """
-        return device.get_state_value('presence', False)
