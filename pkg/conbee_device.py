@@ -97,6 +97,7 @@ class ConBeeDevice(Device):
         prop -- property of the light
         device -- device of the light
         """
+
         return  device.property_value(device, 'config',prop)
 
     @staticmethod
@@ -108,6 +109,7 @@ class ConBeeDevice(Device):
         path - 'config' or 'state'
         device -- device of the light
         """
+        console.log('device.light: %s', device.light)
         value = device.light[path][prop.name]
         if 'type' in prop.description and prop.description['type'] == 'boolean':
             value = bool(value)
@@ -244,7 +246,7 @@ class ConBeeTemperatureSensor(ConBeeDevice):
 
         logging.info('ConBeeTemperatureSensor.__init__ %s', light)
         self.add_property(ConBeeTemperatureProperty(self, self.property_state_value))
-        # self.add_property(ConBeeLevelProperty(self, 'Battery', self.property_config_value))
+        self.add_property(ConBeeLevelProperty(self, 'Battery', self.property_config_value))
 
         logging.info('Added ConBeeSensor %s', str(self.as_dict()))
 
