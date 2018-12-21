@@ -8,7 +8,7 @@ from gateway_addon import Device
 from conbee_action import FadeAction
 from conbee_property import ConBeeBrightnessProperty, ConBeeColorTemperatureProperty, \
                             ConBeeLevelProperty, ConBeeMotionProperty, \
-                            ConBeeOnOffProperty, ConbeeTemperatureProperty
+                            ConBeeOnOffProperty, ConBeeTemperatureProperty
 
 class ConBeeDevice(Device):
     """ConBee device type."""
