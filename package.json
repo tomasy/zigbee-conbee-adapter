@@ -1,0 +1,70 @@
+{
+  "name": "zigbee-conbee-adapter",
+  "display_name": "Zigbee-Conbee Adapter",
+  "version": "0.9.4",
+  "description": "Uses deCONZ REST API to manage ConBee USB stick. Check https://github.com/tomasy/zigbee-conbee-adapter ",
+  "author": "tomasy",
+  "main": "main.py",
+  "keywords": [
+    "mozilla",
+    "iot",
+    "adapter",
+    "zigbee",
+    "conbee",
+    "deconz"
+  ],
+  "homepage": "https://github.com/tomasy/zigbee-conbee-adapter",
+  "license": "MPL-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tomasy/zigbee-conbee-adapter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tomasy/zigbee-conbee-adapter/issues"
+  },
+  "files": [
+    "LICENSE",
+    "SHA256SUMS",
+    "README.md",
+    "main.py",
+    "pkg/__init__.py",
+    "pkg/conbee_action.py",
+    "pkg/conbee_adapter.py",
+    "pkg/conbee_config.py",
+    "pkg/conbee_device.py",
+    "pkg/conbee_property.py",
+    "pkg/deconz_rest_api.py",
+    "pkg/util.py"
+ ],
+  "moziot": {
+    "api": {
+      "min": 2,
+      "max": 2
+    },
+    "enabled": false,
+    "plugin": true,
+    "exec": "python3 {path}/main.py",
+    "config": {
+      "url": "",
+      "apikey" : ""
+    },
+    "schema": {
+      "type": "object",
+      "description": "Configuration for access ConBee USB-stick Rest API",
+      "required": [
+        "url",
+        "apikey"
+      ],
+      "properties": {
+        "url": {
+          "type": "string",
+          "description": "URL to device with ConBee USB-stick"
+        },
+        "apikey": {
+          "type": "string",
+          "description": "Key to access rest api (Check README.md)"
+        }
+      }
+    }
+  }
+}
