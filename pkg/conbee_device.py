@@ -244,7 +244,7 @@ class ConBeeTemperatureSensor(ConBeeDevice):
 
         logging.info('ConBeeTemperatureSensor.__init__ %s', light)
         self.add_property(ConBeeTemperatureProperty(self, self.property_state_value))
-        //self.add_property(ConBeeLevelProperty(self, 'Battery', self.property_config_value))
+        # self.add_property(ConBeeLevelProperty(self, 'Battery', self.property_config_value))
 
         logging.info('Added ConBeeSensor %s', str(self.as_dict()))
 
