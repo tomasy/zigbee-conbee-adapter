@@ -109,7 +109,6 @@ class ConBeeDevice(Device):
         path - 'config' or 'state'
         device -- device of the light
         """
-        logging.info('device.light: %s', device.light)
         value = device.light[path][prop.name]
         if 'type' in prop.description and prop.description['type'] == 'boolean':
             value = bool(value)
@@ -243,6 +242,7 @@ class ConBeeTemperatureSensor(ConBeeDevice):
         ConBeeDevice.__init__(self, adapter, _id, dev_id, light)
         self._type = ['TemperatureSensor']
         self._context = 'https://iot.mozilla.org/schemas'
+        self.poll_interval = 10
 
         logging.info('ConBeeTemperatureSensor.__init__ %s', light)
         self.add_property(ConBeeTemperatureProperty(self, self.property_state_value))
