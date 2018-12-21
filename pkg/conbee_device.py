@@ -243,10 +243,8 @@ class ConBeeTemperatureSensor(ConBeeDevice):
         self._context = 'https://iot.mozilla.org/schemas'
 
         logging.info('ConBeeTemperatureSensor.__init__ %s', light)
-        logging.info('property_state_value %s', self.property_state_value);
-        logging.info('property_config_value %s', self.property_config_value);
         self.add_property(ConBeeTemperatureProperty(self, self.property_state_value))
-        self.add_property(ConBeeLevelProperty(self, 'Battery', self.property_config_value))
+        //self.add_property(ConBeeLevelProperty(self, 'Battery', self.property_config_value))
 
         logging.info('Added ConBeeSensor %s', str(self.as_dict()))
 
