@@ -8,7 +8,7 @@ from gateway_addon import Device
 from conbee_action import FadeAction
 from conbee_property import ConBeeBrightnessProperty, ConBeeColorTemperatureProperty, \
                             ConBeeLevelProperty, ConBeeMotionProperty, \
-                            ConBeeOnOffProperty
+                            ConBeeOnOffProperty, ConbeeTemperatureProperty
 
 class ConBeeDevice(Device):
     """ConBee device type."""
@@ -192,7 +192,7 @@ class ConBeeLight(ConBeeDevice):
             return True
         return False
 
-class ConBeeSensor(ConBeeDevice):
+class ConBeeMotionSensor(ConBeeDevice):
     """ConBee sensor type."""
 
     def __init__(self, adapter, _id, dev_id, light):
@@ -210,6 +210,40 @@ class ConBeeSensor(ConBeeDevice):
 
         logging.info('ConBeeSensor.__init__ %s', light)
         self.add_property(ConBeeMotionProperty(self, self.is_motion))
+        self.add_property(ConBeeLevelProperty(self, 'Battery', self.property_config_value))
+
+        logging.info('Added ConBeeSensor %s', str(self.as_dict()))
+
+    def get_dev_data(self):
+        return self.adapter.rest.get_sensor(self.dev_id)
+
+    @staticmethod
+    def is_motion(device, prop=None):
+        """
+        Is light on or off.
+
+        device -- device the light is connected to
+        """
+        return device.get_state_value('presence', False)
+
+class ConBeeTemperatureSensor(ConBeeDevice):
+    """ConBee sensor type."""
+
+    def __init__(self, adapter, _id, dev_id, light):
+        """
+        Initialize the object.
+
+        adapter -- the Adapter managing this device
+        _id -- ID of this device
+        dev_id -- id on the conbee device
+        light -- device info from ConBee request
+        """
+        ConBeeDevice.__init__(self, adapter, _id, dev_id, light)
+        self._type = ['TemperatureSensor']
+        self._context = 'https://iot.mozilla.org/schemas'
+
+        logging.info('ConBeeSensor.__init__ %s', light)
+        self.add_property(ConBeeTemperatureProperty(self, self.property_state_value))
         self.add_property(ConBeeLevelProperty(self, 'Battery', self.property_config_value))
 
         logging.info('Added ConBeeSensor %s', str(self.as_dict()))

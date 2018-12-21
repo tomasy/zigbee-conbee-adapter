@@ -8,7 +8,7 @@ import time
 from gateway_addon import Adapter
 
 from conbee_config import Config
-from conbee_device import ConBeeLight, ConBeeSensor
+from conbee_device import ConBeeLight, ConBeeMotionSensor, ConBeeTemperatureSensor
 from deconz_rest_api import DeconzRestApi
 
 
@@ -57,7 +57,12 @@ class ConBeeAdapter(Adapter):
                     logging.info('Sensors: %s %s %s', k, kk, vv)
                 if json_dict[k]['modelid'].startswith('TRADFRI motion sensor'):
                     logging.info('Add sensor %s', k)
-                    device = ConBeeSensor(self, uid, str(k), json_dict[k])
+                    device = ConBeeMotionSensor(self, uid, str(k), json_dict[k])
+                    logging.debug('Sensor %s added', k)
+                    self.handle_device_added(device)
+                if json_dict[k]['modelid'].startswith('lumi.weather'):
+                    logging.info('Add sensor %s', k)
+                    device = ConBeeTemperatureSensor(self, uid, str(k), json_dict[k])
                     logging.debug('Sensor %s added', k)
                     self.handle_device_added(device)
                 else:

@@ -169,3 +169,11 @@ class ConBeeLevelProperty(ConBeeProperty):
                 'unit': 'percent','readOnly': True, 'description': 'Battery level'}
         ConBeeProperty.__init__(self, device, 'battery', desc, func_is=func_is)
         logging.info('Level property to device %s', device.name)
+
+
+class ConBeeTemperatureProperty(ConBeeProperty):
+    def __init__(self, device, func_is):
+        desc = {'label': 'Temperature', '@type': 'TemperatureProperty', 'type': 'number', 'readOnly': True, 'description': 'temperature'}
+        ConBeeProperty.__init__(self, device, 'temperature', desc, func_is=func_is)
+        self.update()
+        logging.info('Temperature property to device %s', device.name)
