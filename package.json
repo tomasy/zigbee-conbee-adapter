@@ -35,7 +35,7 @@
     "pkg/conbee_property.py",
     "pkg/deconz_rest_api.py",
     "pkg/util.py"
- ],
+  ],
   "moziot": {
     "api": {
       "min": 2,
@@ -46,7 +46,7 @@
     "exec": "python3 {path}/main.py",
     "config": {
       "url": "",
-      "apikey" : ""
+      "apikey": ""
     },
     "schema": {
       "type": "object",
