@@ -185,6 +185,6 @@ class ConBeeTemperatureProperty(ConBeeProperty):
         value -- the value from device
         """
         # return int(int(value) / 2.55)
-        return ((value / 100) * 9/5) + 32)
+        return ((value / 100) * 9/5) + 32
         # (18°C × 9/5) + 32 = 64.4°F
 
