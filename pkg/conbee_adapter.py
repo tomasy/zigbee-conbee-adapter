@@ -60,7 +60,7 @@ class ConBeeAdapter(Adapter):
                     device = ConBeeMotionSensor(self, uid, str(k), json_dict[k])
                     logging.debug('Sensor %s added', k)
                     self.handle_device_added(device)
-                elif json_dict[k]['modelid'].startswith('lumi.weather') and json_dict[k]['type'] == 'ZHATemperature':
+                elif json_dict[k]['modelid'].startswith('lumi.weather', '3310-G') and json_dict[k]['type'] == 'ZHATemperature':
                     logging.info('Add sensor %s', k)
                     device = ConBeeTemperatureSensor(self, uid, str(k), json_dict[k])
                     logging.debug('Sensor %s added', k)
