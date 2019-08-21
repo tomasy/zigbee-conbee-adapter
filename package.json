@@ -1,6 +1,6 @@
 {
   "name": "zigbee-conbee-adapter",
-  "display_name": "Zigbee (ConBee USB stick)",
+  "display_name": "Zigbee (via deCONZ REST API)",
   "version": "0.9.5",
   "description": "Uses deCONZ REST API to manage ConBee USB stick. Check https://github.com/tomasy/zigbee-conbee-adapter ",
   "author": "tomasy",
