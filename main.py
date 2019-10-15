@@ -1,4 +1,4 @@
-"""ConBee addon for Mozilla IoT Gateway."""
+"""ConBee Addon for Mozilla IoT Gateway!"""
 
 from os import path
 import functools
